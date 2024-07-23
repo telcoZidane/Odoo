@@ -1,0 +1,47 @@
+﻿using System;
+using System.Collections.Generic;
+
+namespace Core.Core.Entities;
+
+/// <summary>
+/// Email resend wizard
+/// </summary>
+public partial class MailResendMessage
+{
+    public int Id { get; set; }
+
+    /// <summary>
+    /// Message
+    /// </summary>
+    public int? MailMessageId { get; set; }
+
+    /// <summary>
+    /// Created by
+    /// </summary>
+    public int? CreateUid { get; set; }
+
+    /// <summary>
+    /// Last Updated by
+    /// </summary>
+    public int? WriteUid { get; set; }
+
+    /// <summary>
+    /// Created on
+    /// </summary>
+    public DateTime? CreateDate { get; set; }
+
+    /// <summary>
+    /// Last Updated on
+    /// </summary>
+    public DateTime? WriteDate { get; set; }
+
+    public virtual ResUser? CreateU { get; set; }
+
+    public virtual MailMessage? MailMessage { get; set; }
+
+    public virtual ICollection<MailResendPartner> MailResendPartners { get; set; } = new List<MailResendPartner>();
+
+    public virtual ResUser? WriteU { get; set; }
+
+    public virtual ICollection<MailNotification> MailNotifications { get; set; } = new List<MailNotification>();
+}
